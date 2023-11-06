@@ -1,7 +1,6 @@
 #include <Arduino.h>
-
-// put function declarations here:
-int myFunction(int, int);
+#include "Modes/ModeInterface.h"
+#include "Modes/ModeController.h"
 
 #define GPIO0 0
 #define TX_PIN 1 //gpio2
@@ -11,17 +10,20 @@ int myFunction(int, int);
 #define LEFT GPIO0
 #define RIGHT RX_PIN
 
+ModeInterface* module;
+ 
 void setup() {
   pinMode(LEFT, OUTPUT);
   pinMode(RIGHT, OUTPUT);
-  // digitalWrite(LED_BUILTIN, LOW);
+
+  module = new ModeController(LEFT, RIGHT, 1);
+
+  module->init();
   digitalWrite(LEFT, LOW);
   digitalWrite(RIGHT, HIGH);
 }
 
 void loop() {
-  digitalWrite(LEFT, !digitalRead(LEFT));
-  digitalWrite(RIGHT, !digitalRead(RIGHT));
-  // put your main code here, to run repeatedly:
-  delay(1000);
+  module->step();
+  delay(1);
 }
