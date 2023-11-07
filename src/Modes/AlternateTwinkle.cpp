@@ -1,20 +1,21 @@
-#include "ModeController.h"
 #include "ModeInterface.h"
+#include "AlternateTwinkle.h"
+#include "Twinkle.h"
 #include <Arduino.h>
 #include <list>
 
 #include "BlinkOne.h"
 
-void ModeController::init() {
-    this->next = new BlinkOne(pinOne, pinTwo, waitFactor);
-    this->current = new BlinkOne(pinTwo, pinOne, waitFactor);
+void AlternateTwinkle::init() {
+    this->next = new Twinkle(pinOne, pinTwo, waitFactor);
+    this->current = new Twinkle(pinTwo, pinOne, waitFactor);
 
     this->current->init();
     lastStep = millis();
 }
 
-void ModeController::step() {
-    if (lastStep + (waitFactor * 100) < millis()) {
+void AlternateTwinkle::step() {
+    if (lastStep + (waitFactor * 2) < millis()) {
         ModeInterface* last = this->current;
         this->current = this->next;
         this->next = last;
@@ -26,6 +27,5 @@ void ModeController::step() {
     current->step();
 }
 
-void ModeController::tick() {
-    
+void AlternateTwinkle::tick() {
 }

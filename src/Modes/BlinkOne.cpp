@@ -2,8 +2,8 @@
 #include <Arduino.h>
 
 void BlinkOne::init() {
-    digitalWrite(pinOne, LOW);
-    digitalWrite(pinTwo, LOW);
+    digitalWrite(pinOne, DEFAULT);
+    digitalWrite(pinTwo, DEFAULT);
     lastStep = millis();
 }
 
