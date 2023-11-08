@@ -7,10 +7,10 @@
 
 #define TEST_MODE true
 
-#define GPIO0 0 // led strand 1
-#define TX_PIN 1 //gpio2 // internal led
-#define GPIO2 2 // 
-#define RX_PIN 3 //gpio4 // external led //led strand 2
+#define GPIO0 0 // gpio0 led strand 1
+#define TX_PIN 1 //gpio1 
+#define GPIO2 2 // gpio2 // internal led
+#define RX_PIN 3 //gpio3 // external led //led strand 2
 
 #if TEST_MODE 
   #define LEFT TX_PIN
