@@ -7,40 +7,40 @@
 
 #define TEST_MODE true
 
-#define GPIO0 0 // gpio0 led strand 1
-#define TX_PIN 1 //gpio1 
-#define GPIO2 2 // gpio2 // internal led
-#define RX_PIN 3 //gpio3 // external led //led strand 2
+#define GPIO0 0 // gpio0 
+#define TX_PIN 1 //gpio1 // programmer led (BLUE)
+#define GPIO2 2 // gpio2 // internal led 
+#define RX_PIN 3 //gpio3 // programmer led (green)
 
 #if TEST_MODE 
-  #define LEFT TX_PIN
-  #define RIGHT RX_PIN
+  #define LED_STRAND_1 TX_PIN
+  #define LED_STRAND_2 RX_PIN
   #define DEFAULT HIGH
 #else
-  #define LEFT GPIO0
-  #define RIGHT RX_PIN
+  #define LED_STRAND_1 GPIO0
+  #define LED_STRAND_2 RX_PIN
   #define DEFAULT LOW
 #endif
 
 ModeInterface* module;
  
 void setup() {
-  pinMode(LEFT, OUTPUT);
-  pinMode(RIGHT, OUTPUT);
+  pinMode(LED_STRAND_1, OUTPUT);
+  pinMode(LED_STRAND_2, OUTPUT);
 
-  digitalWrite(LEFT, DEFAULT);
-  digitalWrite(RIGHT, !DEFAULT);
+  digitalWrite(LED_STRAND_1, DEFAULT);
+  digitalWrite(LED_STRAND_2, !DEFAULT);
 
-  // module = new ModeController(LEFT, RIGHT, 250);
-  // module = new Alternate(LEFT, RIGHT, 5); //steady on
-  // module = new Alternate(LEFT, RIGHT, 400);
-  module = new AlternateTwinkle(LEFT, RIGHT, 800);
+  // module = new ModeController(LED_STRAND_1, LED_STRAND_2, 250);
+  // module = new Alternate(LED_STRAND_1, LED_STRAND_2, 5); //steady on
+  // module = new Alternate(LED_STRAND_1, LED_STRAND_2, 400);
+  module = new AlternateTwinkle(LED_STRAND_1, LED_STRAND_2, 800);
   module->init();
 }
 
 void loop() {
-  // digitalWrite(LEFT, !digitalRead(LEFT));
-  // digitalWrite(RIGHT, !digitalRead(RIGHT));
+  // digitalWrite(LED_STRAND_1, !digitalRead(LEFT));
+  // digitalWrite(LED_STRAND_2, !digitalRead(RIGHT));
   // delay(499);
   
   module->step();
