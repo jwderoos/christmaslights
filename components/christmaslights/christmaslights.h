@@ -1,10 +1,9 @@
 
 #pragma once
 
-
 #include "esphome/core/component.h"
 
-#include "Modes/ModeInterface.h"
+#include "ModeInterface.h"
 
 #define TEST_MODE true
 

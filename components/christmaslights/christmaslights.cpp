@@ -2,10 +2,10 @@
 
 #include "esphome/core/log.h"
 
-#include "Modes/ModeController.h"
-#include "Modes/Alternate.h"
-#include "Modes/Twinkle.h"
-#include "Modes/AlternateTwinkle.h"
+#include "ModeController.h"
+#include "Alternate.h"
+#include "Twinkle.h"
+#include "AlternateTwinkle.h"
 
 namespace esphome {
       namespace christmas_lights {
