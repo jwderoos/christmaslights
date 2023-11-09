@@ -7,10 +7,8 @@
 #include "Modes/Twinkle.h"
 #include "Modes/AlternateTwinkle.h"
 
-namespace jwdr {
+namespace esphome {
 namespace christmas_lights {
-
-static const char *TAG = "christmas_lights.light";
 
 void ChristmasLights::setup() {
    
@@ -38,7 +36,7 @@ void ChristmasLights::loop() {
 
 
 void ChristmasLights::dump_config(){
-    ESP_LOGCONFIG(TAG, "Empty custom light");
+//     ESP_LOGCONFIG(TAG, "Empty custom light");
 }
 
 } //namespace empty_light
