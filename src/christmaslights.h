@@ -1,10 +1,10 @@
-#include "esphome.h"
-#include <Arduino.h>
-#include "christmaslights/src/Modes/ModeInterface.h"
-#include "christmaslights/src/Modes/ModeController.h"
-#include "christmaslights/src/Modes/Alternate.h"
-#include "christmaslights/src/Modes/Twinkle.h"
-#include "christmaslights/src/Modes/AlternateTwinkle.h"
+
+#pragma once
+
+#include "esphome/core/component.h"
+
+// #include <Arduino.h>
+#include "Modes/ModeInterface.h"
 
 #define TEST_MODE true
 
@@ -24,32 +24,17 @@
 #endif
 
 
-class ChristmasLigts : public Component {
- private:
-  ModeInterface* module;
+namespace jwdr {
+namespace christmas_lights {
+
+class ChristmasLights : public Component {
  public:
-  void setup() override {
-      pinMode(LED_STRAND_1, OUTPUT);
-      pinMode(LED_STRAND_2, OUTPUT);
-    
-      digitalWrite(LED_STRAND_1, DEFAULT);
-      digitalWrite(LED_STRAND_2, !DEFAULT);
-    
-      // module = new ModeController(LED_STRAND_1, LED_STRAND_2, 250);
-      // module = new Alternate(LED_STRAND_1, LED_STRAND_2, 5); //steady on
-      // module = new Alternate(LED_STRAND_1, LED_STRAND_2, 400);
-      module = new AlternateTwinkle(LED_STRAND_1, LED_STRAND_2, 800);
-      module->init();
-  }
-  
-  void loop() override {
-      // digitalWrite(LED_STRAND_1, !digitalRead(LEFT));
-      // digitalWrite(LED_STRAND_2, !digitalRead(RIGHT));
-      // delay(499);
-      
-      module->step();
-      delay(1);
-    }
-  }
+  void setup() override;
+  void loop() override;
+  void dump_config() override;
 };
+
+
+}  // namespace empty_component
+}  // namespace esphome
 
