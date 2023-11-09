@@ -27,10 +27,12 @@ namespace jwdr {
 namespace christmas_lights {
 
 class ChristmasLights : public Component {
- public:
-  void setup() override;
-  void loop() override;
-  void dump_config() override;
+  private:
+    ModeInterface module;
+  public:
+    void setup() override;
+    void loop() override;
+    void dump_config() override;
 };
 
 
