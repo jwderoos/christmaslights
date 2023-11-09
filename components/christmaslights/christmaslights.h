@@ -1,10 +1,10 @@
 
 #pragma once
 
+
 #include "esphome/core/component.h"
 
-// #include <Arduino.h>
-#include "../../src/Modes/ModeInterface.h"
+#include "Modes/ModeInterface.h"
 
 #define TEST_MODE true
 
