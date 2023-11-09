@@ -4,7 +4,7 @@
 #include "esphome/core/component.h"
 
 // #include <Arduino.h>
-#include "Modes/ModeInterface.h"
+#include "../../src/Modes/ModeInterface.h"
 
 #define TEST_MODE true
 
