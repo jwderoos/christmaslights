@@ -6,21 +6,21 @@
 #include "BlinkOne.h"
 
 void ModeController::init() {
-    this->next = new BlinkOne(pinOne, pinTwo, waitFactor);
-    this->current = new BlinkOne(pinTwo, pinOne, waitFactor);
+    this->next = new BlinkOne(strand1_, strand2_, waitFactor_);
+    this->current = new BlinkOne(strand2_, strand1_, waitFactor_);
 
     this->current->init();
-    lastStep = millis();
+    lastStep_ = millis();
 }
 
 void ModeController::step() {
-    if (lastStep + (waitFactor * 100) < millis()) {
+    if (lastStep_ + (waitFactor_ * 100) < millis()) {
         ModeInterface* last = this->current;
         this->current = this->next;
         this->next = last;
 
         this->current->init();
-        lastStep = millis();
+        lastStep_ = millis();
     }
 
     current->step();

@@ -6,22 +6,22 @@
 #include "BlinkOne.h"
 
 void Twinkle::init() {
-    this->next = new BlinkOne(pinOne, pinTwo, waitFactor / 8);
-    this->current = new BlinkOne(pinTwo, pinOne, waitFactor / 4);
+    this->next = new BlinkOne(strand1_, strand2_, waitFactor_ / 8);
+    this->current = new BlinkOne(strand2_, strand1_, waitFactor_ / 4);
 
     this->current->init();
-    lastStep = millis();
+    lastStep_ = millis();
 }
 
 void Twinkle::step() {
     
-    if (lastStep + waitFactor < millis()) {
+    if (lastStep_ + waitFactor_ < millis()) {
         ModeInterface* last = this->current;
         this->current = this->next;
         this->next = last;
 
         this->current->init();
-        lastStep = millis();
+        lastStep_ = millis();
     }
 
     current->step();

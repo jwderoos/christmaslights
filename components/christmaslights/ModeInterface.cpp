@@ -1,15 +1,21 @@
 #include "ModeInterface.h"
 #include <Arduino.h>
 
-ModeInterface::ModeInterface(int pinOne, int pinTwo, int waitFactor)  {
-    this->pinOne = pinOne;
-    this->pinTwo = pinTwo;
-    this->waitFactor = waitFactor;
+#include "esphome/components/output/float_output.h"
+
+ModeInterface::ModeInterface(
+            esphome::output::FloatOutput *strand1,
+            esphome::output::FloatOutput *strand2,
+            int waitFactor
+)  {
+    strand1_ = strand1;
+    strand2_ = strand2;
+    waitFactor_ = waitFactor;    
 }
 
 void ModeInterface::step() {
-    if (lastStep + waitFactor < millis()) {
+    if (lastStep_ + waitFactor_ < millis()) {
         this->tick();
-        lastStep = millis();
+        lastStep_ = millis();
     }
 }

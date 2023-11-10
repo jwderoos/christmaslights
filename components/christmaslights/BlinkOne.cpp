@@ -2,11 +2,17 @@
 #include <Arduino.h>
 
 void BlinkOne::init() {
-    digitalWrite(pinOne, DEFAULT);
-    digitalWrite(pinTwo, DEFAULT);
-    lastStep = millis();
+    strand1_->turn_off();
+    strand2_->turn_off();
+    lastStep_ = millis();
 }
 
 void BlinkOne::tick() {
-    digitalWrite(pinOne, !digitalRead(pinOne));
+    if (strand1State_) {
+        strand1_->turn_on();
+        strand1State_ = 0;
+    }else {
+        strand1_->turn_off();
+        strand1State_ = 0;
+    }
 }

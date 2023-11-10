@@ -7,21 +7,21 @@
 #include "BlinkOne.h"
 
 void AlternateTwinkle::init() {
-    this->next = new Twinkle(pinOne, pinTwo, waitFactor);
-    this->current = new Twinkle(pinTwo, pinOne, waitFactor);
+    this->next = new Twinkle(strand1_, strand2_, waitFactor_);
+    this->current = new Twinkle(strand2_, strand1_, waitFactor_);
 
     this->current->init();
-    lastStep = millis();
+    lastStep_ = millis();
 }
 
 void AlternateTwinkle::step() {
-    if (lastStep + (waitFactor * 2) < millis()) {
+    if (lastStep_ + (waitFactor_ * 2) < millis()) {
         ModeInterface* last = this->current;
         this->current = this->next;
         this->next = last;
 
         this->current->init();
-        lastStep = millis();
+        lastStep_ = millis();
     }
 
     current->step();
