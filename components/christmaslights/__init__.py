@@ -12,7 +12,7 @@ christmas_lights_ns = cg.esphome_ns.namespace('christmas_lights')
 ChristmasLights = christmas_lights_ns.class_('ChristmasLights', cg.Component)
 
 CONFIG_SCHEMA = cv.Schema({
-    cv.GenerateID(): cv.declare_id(ChristmasLights),
+    cv.GenerateID(CONF_OUTPUT_ID): cv.declare_id(ChristmasLights),
     cv.Required(CONF_STRAND_1): cv.use_id(output.FloatOutput),
     cv.Required(CONF_STRAND_2): cv.use_id(output.FloatOutput)
 }).extend(cv.COMPONENT_SCHEMA)
