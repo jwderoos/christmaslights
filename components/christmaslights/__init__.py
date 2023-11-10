@@ -7,7 +7,6 @@ from esphome.const import CONF_OUTPUT_ID, CONF_OUTPUT
 CONF_STRAND_1 = "strand1"
 CONF_STRAND_2 = "strand2"
 
-
 christmas_lights_ns = cg.esphome_ns.namespace('christmas_lights')
 ChristmasLights = christmas_lights_ns.class_('ChristmasLights', cg.Component)
 

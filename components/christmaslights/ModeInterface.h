@@ -10,6 +10,8 @@ class ModeInterface {
         float strand2State_ = 0;
         int waitFactor_;
         unsigned long lastStep_;
+        void setStrand1State(float newState);
+        void setStrand2State(float newState);
     public:
         ModeInterface(
             esphome::output::FloatOutput *strand1,

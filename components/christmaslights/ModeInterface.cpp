@@ -19,3 +19,23 @@ void ModeInterface::step() {
         lastStep_ = millis();
     }
 }
+
+void ModeInterface::setStrand1State(float newState) {
+    strand1State_ = newState;
+    strand1_->set_level(newState);
+    if (strand1State_ == 0) {
+        strand1_->turn_off();
+    } else {
+        setStrand2State(0);
+    }
+}
+
+void ModeInterface::setStrand2State(float newState) {
+    strand2State_ = newState;
+    strand2_->set_level(newState);
+    if (strand2State_ == 0) {
+        strand2_->turn_off();
+    } else {
+        setStrand1State(0);
+    }
+}

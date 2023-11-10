@@ -9,10 +9,8 @@ void BlinkOne::init() {
 
 void BlinkOne::tick() {
     if (strand1State_) {
-        strand1_->turn_on();
-        strand1State_ = 0;
+        setStrand1State(1);
     }else {
-        strand1_->turn_off();
-        strand1State_ = 0;
+        setStrand1State(0);
     }
 }

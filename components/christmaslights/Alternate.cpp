@@ -2,12 +2,14 @@
 #include <Arduino.h>
 
 void Alternate::init() {
-    digitalWrite(pinOne, !DEFAULT);
-    digitalWrite(pinTwo, DEFAULT);
-    lastStep = millis();
+    setStrand1State(1);
+    lastStep_ = millis();
 }
 
 void Alternate::tick() {
-    digitalWrite(pinOne, !digitalRead(pinOne));
-    digitalWrite(pinTwo, !digitalRead(pinTwo));
+    if (strand1State_) {
+        setStrand2State(1);
+    } else {
+        setStrand1State(1);
+    }
 }
