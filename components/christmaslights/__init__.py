@@ -6,15 +6,16 @@ from esphome.const import CONF_OUTPUT_ID, CONF_OUTPUT
 
 christmas_lights_ns = cg.esphome_ns.namespace('christmas_lights')
 ChristmasLights = christmas_lights_ns.class_('ChristmasLights', cg.Component)
-strand1 = output.FloatOutput()
-strand2 = output.FloatOutput()
+
+strand1 = 0.0
+strand2 = 0.0
 
 CONFIG_SCHEMA = cv.Schema({
     cv.GenerateID(): cv.declare_id(ChristmasLights),
     cv.GenerateID(CONF_OUTPUT_ID): cv.declare_id(strand1),
-    cv.Required(CONF_OUTPUT): cv.use_id(strand1),
+    cv.Required("strand1"): cv.use_id(strand1),
     cv.GenerateID(CONF_OUTPUT_ID): cv.declare_id(strand2),
-    cv.Required(CONF_OUTPUT): cv.use_id(strand2)
+    cv.Required("strand2"): cv.use_id(strand2)
 }).extend(cv.COMPONENT_SCHEMA)
 
 def to_code(config):
