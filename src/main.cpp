@@ -34,8 +34,8 @@ void setup() {
   // module = new ModeController(LED_STRAND_1, LED_STRAND_2, 250);
   // module = new Alternate(LED_STRAND_1, LED_STRAND_2, 5); //steady on
   // module = new Alternate(LED_STRAND_1, LED_STRAND_2, 400);
-  module = new AlternateTwinkle(LED_STRAND_1, LED_STRAND_2, 800);
-  module->init();
+  // module = new AlternateTwinkle(LED_STRAND_1, LED_STRAND_2, 800);
+  // module->init();
 }
 
 void loop() {
