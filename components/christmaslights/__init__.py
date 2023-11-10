@@ -9,8 +9,8 @@ ChristmasLights = christmas_lights_ns.class_('ChristmasLights', cg.Component)
 
 CONFIG_SCHEMA = cv.Schema({
     cv.GenerateID(): cv.declare_id(ChristmasLights),
-    cv.Required("strand1"): cv.output.float_output,
-    cv.Required("strand2"): cv.output.float_output
+    cv.Required("strand1"): output.float_output,
+    cv.Required("strand2"): output.float_output
 }).extend(cv.COMPONENT_SCHEMA)
 
 def to_code(config):
