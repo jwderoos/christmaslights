@@ -14,7 +14,7 @@ ChristmasLights = christmas_lights_ns.class_('ChristmasLights', cg.Component)
 
 CONFIG_SCHEMA = cv.Schema({
     cv.GenerateID(CONF_OUTPUT_ID): cv.declare_id(ChristmasLights),
-    cv.required(CONF_ENABLED): cv.use_id(bool_),
+    # cv.required(CONF_ENABLED): cv.use_id(bool_),
     cv.Required(CONF_STRAND_1): cv.use_id(output.FloatOutput),
     cv.Required(CONF_STRAND_2): cv.use_id(output.FloatOutput)
 }).extend(cv.COMPONENT_SCHEMA)
@@ -23,8 +23,8 @@ def to_code(config):
     var = cg.new_Pvariable(config[CONF_OUTPUT_ID])
     yield cg.register_component(var, config)
 
-    enabled = yield cg.get_variable(config[CONF_ENABLED])
-    cg.add(var.set_enabled(enabled))
+    # enabled = yield cg.get_variable(config[CONF_ENABLED])
+    # cg.add(var.set_enabled(enabled))
 
     strand1 = yield cg.get_variable(config[CONF_STRAND_1])
     cg.add(var.set_strand1(strand1))
