@@ -14,7 +14,7 @@ void AlternateTwinkle::init() {
     lastStep_ = millis();
 }
 
-void AlternateTwinkle::step() {
+void AlternateTwinkle::loop() {
     if (lastStep_ + (waitFactor_ * 2) < millis()) {
         ModeInterface* last = this->current;
         this->current = this->next;
@@ -24,7 +24,7 @@ void AlternateTwinkle::step() {
         lastStep_ = millis();
     }
 
-    current->step();
+    current->loop();
 }
 
 void AlternateTwinkle::tick() {

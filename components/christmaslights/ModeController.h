@@ -7,7 +7,7 @@ class ModeController: public ModeInterface {
     public:
         using ModeInterface::ModeInterface;
         void init();
-        void step();
+        void loop();
     protected:
         void tick();
     private:

@@ -13,7 +13,7 @@ ModeInterface::ModeInterface(
     waitFactor_ = waitFactor;    
 }
 
-void ModeInterface::step() {
+void ModeInterface::loop() {
     if (lastStep_ + waitFactor_ < millis()) {
         this->tick();
         lastStep_ = millis();

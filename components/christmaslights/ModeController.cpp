@@ -13,7 +13,7 @@ void ModeController::init() {
     lastStep_ = millis();
 }
 
-void ModeController::step() {
+void ModeController::loop() {
     if (lastStep_ + (waitFactor_ * 100) < millis()) {
         ModeInterface* last = this->current;
         this->current = this->next;
@@ -23,7 +23,7 @@ void ModeController::step() {
         lastStep_ = millis();
     }
 
-    current->step();
+    current->loop();
 }
 
 void ModeController::tick() {

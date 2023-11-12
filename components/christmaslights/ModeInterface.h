@@ -19,7 +19,7 @@ class ModeInterface {
             int waitFactor
         );
         virtual void init() = 0;
-        virtual void step();
+        virtual void loop();
     protected:
         virtual void tick() = 0;
 };

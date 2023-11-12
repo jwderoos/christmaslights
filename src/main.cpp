@@ -43,6 +43,6 @@ void loop() {
   // digitalWrite(LED_STRAND_2, !digitalRead(RIGHT));
   // delay(499);
   
-  module->step();
+  module->loop();
   delay(1);
 }

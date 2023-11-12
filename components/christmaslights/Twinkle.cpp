@@ -13,7 +13,7 @@ void Twinkle::init() {
     lastStep_ = millis();
 }
 
-void Twinkle::step() {
+void Twinkle::loop() {
     
     if (lastStep_ + waitFactor_ < millis()) {
         ModeInterface* last = this->current;
@@ -24,7 +24,7 @@ void Twinkle::step() {
         lastStep_ = millis();
     }
 
-    current->step();
+    current->loop();
 }
 
 void Twinkle::tick() {
