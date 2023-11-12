@@ -2,7 +2,7 @@ import esphome.codegen as cg
 import esphome.config_validation as cv
 
 from esphome.components import output
-from esphome.const import CONF_OUTPUT_ID, CONF_OUTPUT
+from esphome.const import CONF_OUTPUT_ID
 
 CONF_STRAND_1 = "strand1"
 CONF_STRAND_2 = "strand2"
@@ -19,6 +19,9 @@ CONFIG_SCHEMA = cv.Schema({
 def to_code(config):
     var = cg.new_Pvariable(config[CONF_OUTPUT_ID])
     yield cg.register_component(var, config)
+
+    template_ = cg.variable("enabled"`)
+    cg.add(var.set_enabled(template_))
 
     strand1 = yield cg.get_variable(config[CONF_STRAND_1])
     cg.add(var.set_strand1(strand1))

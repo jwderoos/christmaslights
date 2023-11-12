@@ -30,12 +30,19 @@ namespace esphome {
     class ChristmasLights : public Component {
       private:
         ModeInterface *module_;
+        bool enabled_;
         output::FloatOutput *strand1_;
         output::FloatOutput *strand2_;
       public:
         void setup() override;
         void loop() override;
 
+        void set_enabled(bool newState) 
+        { 
+          enabled_ = newState;
+          strand1_->turn_off();
+          strand2_->turn_off();
+        }
         void set_strand1(output::FloatOutput *strand1) { strand1_ = strand1; }
         void set_strand2(output::FloatOutput *strand2) { strand2_ = strand2; }
         void dump_config() override;
