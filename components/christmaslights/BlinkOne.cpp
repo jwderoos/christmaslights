@@ -2,8 +2,8 @@
 #include <Arduino.h>
 
 void BlinkOne::init() {
-    strand1_->turn_off();
-    strand2_->turn_off();
+    setStrand1State(0);
+    setStrand2State(0);
     lastStep_ = millis();
 }
 
