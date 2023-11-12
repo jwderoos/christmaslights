@@ -3,6 +3,7 @@ import esphome.config_validation as cv
 
 from esphome.components import output
 from esphome.const import CONF_OUTPUT_ID
+from esphome.cpp_types import bool_
 
 CONF_ENABLED = "enabled"
 CONF_STRAND_1 = "strand1"
@@ -13,7 +14,7 @@ ChristmasLights = christmas_lights_ns.class_('ChristmasLights', cg.Component)
 
 CONFIG_SCHEMA = cv.Schema({
     cv.GenerateID(CONF_OUTPUT_ID): cv.declare_id(ChristmasLights),
-    cv.required(CONF_ENABLED): cv.use_id(bool),
+    cv.required(CONF_ENABLED): cv.use_id(bool_),
     cv.Required(CONF_STRAND_1): cv.use_id(output.FloatOutput),
     cv.Required(CONF_STRAND_2): cv.use_id(output.FloatOutput)
 }).extend(cv.COMPONENT_SCHEMA)
