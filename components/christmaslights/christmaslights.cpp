@@ -17,7 +17,6 @@ namespace esphome {
                   // module = new Alternate(strand1_, strand2_, 400);
                   // module_ = new AlternateTwinkle(strand1_, strand2_, 800);
                   // module_->init();
-                  sleep(1);
                   module_->step();
             }
 
