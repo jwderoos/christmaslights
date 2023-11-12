@@ -1,8 +1,8 @@
 import esphome.codegen as cg
 import esphome.config_validation as cv
 
-from esphome.components import output, light_output
-from esphome.const import CONF_OUTPUT_ID, CONF_LIGHT, CONF_ID
+from esphome.components import output
+from esphome.const import CONF_OUTPUT_ID
 
 CONF_STRAND_1 = "strand1"
 CONF_STRAND_2 = "strand2"
