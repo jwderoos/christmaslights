@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "log.h": "c",
+        "fade.h": "c",
+        "modeinterface.h": "c"
+    }
+}
