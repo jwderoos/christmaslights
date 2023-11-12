@@ -4,7 +4,7 @@
 void BlinkOne::init() {
     setStrand1State(0);
     setStrand2State(0);
-    lastStep_ = millis();
+    lastStep_ = 0;
 }
 
 void BlinkOne::tick() {

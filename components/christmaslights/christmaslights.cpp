@@ -17,14 +17,13 @@ namespace esphome {
                   // module = new Alternate(strand1_, strand2_, 400);
                   // module_ = new AlternateTwinkle(strand1_, strand2_, 800);
                   // module_->init();
-                  delay(1000);
+                  sleep(1);
                   module_->step();
             }
 
             void ChristmasLights::loop() {
                   module_->step();
             }
-
 
             void ChristmasLights::dump_config(){
                   ESP_LOGCONFIG("strand1", "FloatOutput");
