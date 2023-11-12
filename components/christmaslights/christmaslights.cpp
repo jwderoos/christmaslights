@@ -6,12 +6,12 @@
 #include "Alternate.h"
 #include "Twinkle.h"
 #include "AlternateTwinkle.h"
-#include "Fade.h"
+#include "FadeInOut.h"
 
 namespace esphome {
       namespace christmas_lights {
             void ChristmasLights::setup() {
-                  module_ = new Fade(strand1_, strand2_, 10);
+                  module_ = new FadeInOut(strand1_, strand2_, 5);
                   // module_ = new Alternate(strand1_, strand2_, 1000); //steady on
                   // module_ = new BlinkOne(strand1_, strand2_, 250);
                   // module_ = new ModeController(strand1_, strand2_, 250);
