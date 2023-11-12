@@ -26,7 +26,6 @@
 
 namespace esphome {
   namespace christmas_lights {
-
     class ChristmasLights : public Component {
       private:
         ModeInterface *module_;
