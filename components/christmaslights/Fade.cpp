@@ -13,7 +13,7 @@ void Fade::init() {
 
 void Fade::tick() {
     if (current_ >= 1) {
-        current_ == 0;
+        current_ = 0;
     }
 
     if (primary_) {
