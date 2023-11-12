@@ -35,7 +35,7 @@ namespace esphome {
       public:
         void setup() override;
         void loop() override;
-        void set_enabled(bool *enabled) { enabled_ = enabled; }
+        void set_enabled(bool enabled) { enabled_ = enabled; }
         void set_strand1(output::FloatOutput *strand1) { strand1_ = strand1; }
         void set_strand2(output::FloatOutput *strand2) { strand2_ = strand2; }
         void dump_config() override;
