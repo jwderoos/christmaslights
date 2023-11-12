@@ -10,7 +10,7 @@ void BlinkOne::init() {
 }
 
 void BlinkOne::tick() {
-    ESP_LOGE("bla", "");
+    esphome::ESP_LOGE("bla", "");
     if (strand1State_) {
         setStrand1State(1);
     }else {
