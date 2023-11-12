@@ -18,13 +18,10 @@ namespace esphome {
                   // module_ = new AlternateTwinkle(strand1_, strand2_, 800);
                   // module_->init();
                   module_->loop();
-
-                  esphome::ESP_LOGE("End of setup", "");
             }
 
             void ChristmasLights::loop() 
             {
-                  esphome::ESP_LOGE("loop", "");
                   module_->loop();
             }
 
