@@ -22,6 +22,6 @@ void Fade::tick() {
         setStrand2State(1 - current_);
     }
 
-    current_ += 0.001;
+    current_ += fadeStep_;
     primary_ = !primary_;
 }
