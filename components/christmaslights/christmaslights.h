@@ -3,7 +3,6 @@
 
 #include "esphome/core/component.h"
 #include "esphome/components/output/float_output.h"
-#include "esphome/components/light/light_output.h"
 
 #include "ModeInterface.h"
 
@@ -27,7 +26,7 @@
 
 namespace esphome {
   namespace christmas_lights {
-    class ChristmasLights : public light::LightOutput, public Component {
+    class ChristmasLights :  public Component {
       private:
         ModeInterface *module_;
         bool enabled_;
