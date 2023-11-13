@@ -2,7 +2,7 @@
 #include <Arduino.h>
 
 void BlinkOne::init() {
-    setStrand1State(0);
+    setStrand1State(1);
     setStrand2State(0);
     lastStep_ = 0;
 }

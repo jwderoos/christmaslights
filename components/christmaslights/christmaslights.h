@@ -29,7 +29,7 @@ namespace esphome {
   namespace christmas_lights {
     class ChristmasLights :  public Component {
       private:
-        ModeInterface *module_;
+        std::shared_ptr<ModeInterface> module_;
         bool enabled_;
         output::FloatOutput *strand1_;
         output::FloatOutput *strand2_;

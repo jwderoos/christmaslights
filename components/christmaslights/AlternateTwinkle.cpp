@@ -6,12 +6,20 @@
 
 #include "BlinkOne.h"
 
-void AlternateTwinkle::init() {
+AlternateTwinkle::AlternateTwinkle(
+    esphome::output::FloatOutput *strand1,
+    esphome::output::FloatOutput *strand2,
+    int waitFactor
+): ModeInterface(strand1, strand2, waitFactor) {
     this->next = new Twinkle(strand1_, strand2_, waitFactor_);
     this->current = new Twinkle(strand2_, strand1_, waitFactor_);
 
     this->current->init();
     lastStep_ = millis();
+}
+
+void AlternateTwinkle::init() {
+
 }
 
 void AlternateTwinkle::loop() {

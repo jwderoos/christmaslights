@@ -1,52 +1,40 @@
 #include "christmaslights.h"
 
 #include "esphome/core/log.h"
-
 #include "ModeController.h"
-#include "Alternate.h"
-#include "Twinkle.h"
-#include "AlternateTwinkle.h"
-#include "FadeInOut.h"
-#include "Fade.h"
+
+static const char *const TAG = "christmasLigths";
 
 namespace esphome {
-      namespace christmas_lights {
-            void ChristmasLights::setup() {
-                  // module_ = new FadeInOut(strand1_, strand2_, 5);
-                  // module_ = new Fade(strand1_, strand2_, 5, 0.0001);
+  namespace christmas_lights {
+    void ChristmasLights::setup() {
+      module_ = std::make_shared<ModeController>(strand1_, strand2_, 300);
+      module_->init();
 
-                  // module_ = new Alternate(strand1_, strand2_, 10); //steady on
+      ESP_LOGI(TAG, "Started ModeController");
+    }
 
-                  // module_ = new BlinkOne(strand1_, strand2_, 250);
-                  module_ = new ModeController(strand1_, strand2_, 250);
-                  // module_ = new Alternate(strand1_, strand2_, 400);
-                  // module_ = new AlternateTwinkle(strand1_, strand2_, 800);
-                  // module_->init();
-            }
+    void ChristmasLights::set_enabled(bool enabled) { 
+      enabled_ = enabled; 
+      if (enabled_) {
+        high_freq_.start();
+      } else {
+        high_freq_.stop();
+      }
+      strand1_->turn_off();
+      strand2_->turn_off();
+    }
 
-            void ChristmasLights::set_enabled(bool enabled) { 
-                  enabled_ = enabled; 
-                  if (enabled_) {
-                        high_freq_.start();
-                  } else {
-                        high_freq_.stop();
-                  }
-                  strand1_->turn_off();
-                  strand2_->turn_off();
-            }
+    void ChristmasLights::loop() 
+    {
+      if (enabled_) {
+        module_->loop();
+      }
+    }
 
-            void ChristmasLights::loop() 
-            {
-                  if (enabled_) {
-                        module_->loop();
-                  }
-            }
-
-            void ChristmasLights::dump_config(){
-                  ESP_LOGCONFIG("enabled", "bool");
-                  ESP_LOGCONFIG("strand1", "FloatOutput");
-                  ESP_LOGCONFIG("strand2", "FloatOutput");
-            }
-
-      } 
+    void ChristmasLights::dump_config(){
+      ESP_LOGCONFIG("strand1", "FloatOutput");
+      ESP_LOGCONFIG("strand2", "FloatOutput");
+    }
+  } 
 } 

@@ -1,13 +1,9 @@
 #include "Fade.h"
-#include <Arduino.h>
 
 #include "esphome/core/log.h"
 
 void Fade::init() {
-    setStrand1State(0);
-    setStrand2State(1);
     current_ = 0;
-
     lastStep_ = 0;
 }
 

@@ -7,6 +7,11 @@
 class FadeInOut: public ModeInterface {
     public:
         using ModeInterface::ModeInterface;
+        FadeInOut(
+            esphome::output::FloatOutput *strand1,
+            esphome::output::FloatOutput *strand2,
+            int waitFactor
+        );
         void init();
     protected:
         Fade *fadeIn_;

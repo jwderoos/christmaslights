@@ -1,26 +1,37 @@
 #include "ModeController.h"
-#include "ModeInterface.h"
+
+#include "esphome/core/log.h"
 #include <Arduino.h>
-#include <list>
-
 #include "BlinkOne.h"
+#include "Alternate.h"
+#include "Fade.h"
+#include "Twinkle.h"
+#include "AlternateTwinkle.h"
+#include "FadeInOut.h"
 
-void ModeController::init() {
-    modes_ = {};
-    modes_.push_back(new BlinkOne(strand1_, strand2_, waitFactor_));
-    // modes_.push_back(new BlinkOne(strand2_, strand1_, waitFactor_));
-
-    modes_.front()->init();
+ModeController::ModeController(
+    esphome::output::FloatOutput *strand1,
+    esphome::output::FloatOutput *strand2,
+    int waitFactor
+): ModeInterface(strand1, strand2, waitFactor) {
+    modes_.push_back(std::make_shared<BlinkOne>(strand1_, strand2_, waitFactor_));
+    modes_.push_back(std::make_shared<Alternate>(strand1_, strand2_, 1000));
+    modes_.push_back(std::make_shared<FadeInOut>(strand1_, strand2_, 5));
+    modes_.push_back(std::make_shared<BlinkOne>(strand2_, strand1_, waitFactor_));
+    modes_.push_back(std::make_shared<AlternateTwinkle>(strand1_, strand2_, 800));
+    modes_.push_back(std::make_shared<Alternate>(strand1_, strand2_, 5)); // permanent on
 
     lastStep_ = millis();
 }
 
-void ModeController::loop() {
-    if (lastStep_ + (waitFactor_ * 100) < millis()) {
-        // modes_.push_back(modes_.front());
-        // modes_.erase(modes_.begin());
+void ModeController::init() {
+}
 
-        modes_.front()->init();
+void ModeController::loop() {
+    if (lastStep_ + (waitFactor_ * 500) < millis()) {
+        modes_.push_back(modes_.front());
+        modes_.erase(modes_.begin());
+
         lastStep_ = millis();
     }
 
@@ -28,5 +39,4 @@ void ModeController::loop() {
 }
 
 void ModeController::tick() {
-    
 }
