@@ -2,6 +2,7 @@
 
 #include "BlinkOne.h"
 #include "ModeInterface.h"
+#include <vector>
 
 class ModeController: public ModeInterface {
     public:
@@ -11,6 +12,5 @@ class ModeController: public ModeInterface {
     protected:
         void tick();
     private:
-        ModeInterface* current;
-        ModeInterface* next;
+        std::vector<ModeInterface*> modes_;
 };

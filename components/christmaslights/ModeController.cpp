@@ -6,24 +6,25 @@
 #include "BlinkOne.h"
 
 void ModeController::init() {
-    this->next = new BlinkOne(strand1_, strand2_, waitFactor_);
-    this->current = new BlinkOne(strand2_, strand1_, waitFactor_);
+    modes_ = {};
+    modes_.push_back(new BlinkOne(strand1_, strand2_, waitFactor_));
+    modes_.push_back(new BlinkOne(strand2_, strand1_, waitFactor_));
 
-    this->current->init();
+    modes_.front()->init();
+
     lastStep_ = millis();
 }
 
 void ModeController::loop() {
     if (lastStep_ + (waitFactor_ * 100) < millis()) {
-        ModeInterface* last = this->current;
-        this->current = this->next;
-        this->next = last;
+        modes_.push_back(modes_.front());
+        modes_.erase(modes_.begin());
 
-        this->current->init();
+        modes_.front()->init();
         lastStep_ = millis();
     }
 
-    current->loop();
+    modes_.front()->loop();
 }
 
 void ModeController::tick() {
