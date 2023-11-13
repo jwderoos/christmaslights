@@ -8,7 +8,7 @@
 void ModeController::init() {
     modes_ = {};
     modes_.push_back(new BlinkOne(strand1_, strand2_, waitFactor_));
-    modes_.push_back(new BlinkOne(strand2_, strand1_, waitFactor_));
+    // modes_.push_back(new BlinkOne(strand2_, strand1_, waitFactor_));
 
     modes_.front()->init();
 
@@ -17,8 +17,8 @@ void ModeController::init() {
 
 void ModeController::loop() {
     if (lastStep_ + (waitFactor_ * 100) < millis()) {
-        modes_.push_back(modes_.front());
-        modes_.erase(modes_.begin());
+        // modes_.push_back(modes_.front());
+        // modes_.erase(modes_.begin());
 
         modes_.front()->init();
         lastStep_ = millis();
