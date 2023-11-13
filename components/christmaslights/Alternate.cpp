@@ -7,11 +7,9 @@ void Alternate::init() {
 }
 
 void Alternate::tick() {
-    // if (strand1State_) {
+    if (strand1State_) {
         setStrand2State(1);
-        delay(waitFactor_);
+    } else {
         setStrand1State(1);
-    // } else {
-        // setStrand1State(1);
-    // }
+    }
 }

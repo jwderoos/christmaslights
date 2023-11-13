@@ -3,6 +3,7 @@
 
 #include "esphome/core/component.h"
 #include "esphome/components/output/float_output.h"
+#include "esphome/core/helpers.h"
 
 #include "ModeInterface.h"
 
@@ -32,14 +33,11 @@ namespace esphome {
         bool enabled_;
         output::FloatOutput *strand1_;
         output::FloatOutput *strand2_;
+        HighFrequencyLoopRequester high_freq_;
       public:
         void setup() override;
         void loop() override;
-        void set_enabled(bool enabled) { 
-          enabled_ = enabled; 
-          strand1_->turn_off();
-          strand2_->turn_off();
-        }
+        void set_enabled(bool enabled);
         void set_strand1(output::FloatOutput *strand1) { strand1_ = strand1; }
         void set_strand2(output::FloatOutput *strand2) { strand2_ = strand2; }
         void dump_config() override;

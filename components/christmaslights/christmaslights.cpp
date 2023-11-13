@@ -16,12 +16,23 @@ namespace esphome {
                   // module_ = new Fade(strand1_, strand2_, 5, 0.0001);
 
                   module_ = new Alternate(strand1_, strand2_, 10); //steady on
-                  
+
                   // module_ = new BlinkOne(strand1_, strand2_, 250);
                   // module_ = new ModeController(strand1_, strand2_, 250);
                   // module_ = new Alternate(strand1_, strand2_, 400);
                   // module_ = new AlternateTwinkle(strand1_, strand2_, 800);
                   // module_->init();
+            }
+
+            void ChristmasLights::set_enabled(bool enabled) { 
+                  enabled_ = enabled; 
+                  if (enabled_) {
+                        high_freq_.start();
+                  } else {
+                        high_freq_.stop();
+                  }
+                  strand1_->turn_off();
+                  strand2_->turn_off();
             }
 
             void ChristmasLights::loop() 
